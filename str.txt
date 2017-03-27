@@ -1,0 +1,24 @@
+阿里编程：读取最大的字符串环
+import sys
+str=sys.stdin.readline().strip('\n').split(' ')
+string=''
+for sstr in str:
+	if sstr<sstr[::-1]:
+		string+=sstr[::-1]
+	else:
+		string+=sstr
+		maxi=max(string)
+lstr=list(string)
+Itemp=[]
+for i in range(len(lstr)):
+	if lstr[i]==maxi:
+		Itemp.append(i)
+for i in range(len(Itemp)):
+	rrstr=[]
+	rstr1=string[0:Itemp[i]][::-1]
+	rstr2=string[Itemp[i]:][::-1]
+	rstr=rstr1+rstr2
+	rrstr.insert(i,rstr[::-1])
+print max(rrstr)
+
+
